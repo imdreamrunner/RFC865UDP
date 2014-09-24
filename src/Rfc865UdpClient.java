@@ -4,7 +4,7 @@
  *
  *  Name: Zhou Xinzi
  *  Group: TS1
- *  Client IP: (to be added)
+ *  Client IP: 172.21.144.129
  *
  *  @author xinzi
  */
@@ -16,7 +16,7 @@ import java.util.Scanner;
 public class Rfc865UdpClient {
 
     static int PORT = 17;
-    static String HOST = "127.0.0.1";
+    static String HOST = "hw1-tech";
     static int READ_BUFFER_SIZE = 512;
 
     static DatagramSocket socket;
@@ -52,7 +52,7 @@ public class Rfc865UdpClient {
             if (messageToSend.equals("q")) {
                 break;
             }
-            messageToSend = "Zhou Xinzi, TS1, 172.21.144.129";
+            // messageToSend = "Zhou Xinzi, TS1, 172.21.144.129";
             try {
                 sendBuffer = messageToSend.getBytes();
                 request = new DatagramPacket(sendBuffer, sendBuffer.length, updServer, PORT);
