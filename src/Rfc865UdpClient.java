@@ -52,6 +52,7 @@ public class Rfc865UdpClient {
             if (messageToSend.equals("q")) {
                 break;
             }
+            messageToSend = "Zhou Xinzi, TS1, 172.21.144.129";
             try {
                 sendBuffer = messageToSend.getBytes();
                 request = new DatagramPacket(sendBuffer, sendBuffer.length, updServer, PORT);
@@ -60,7 +61,7 @@ public class Rfc865UdpClient {
                 response = new DatagramPacket(readBuffer, READ_BUFFER_SIZE);
                 socket.receive(response);
                 responseMessage = new String(readBuffer, 0, READ_BUFFER_SIZE);
-                System.out.println("Received message \"" + responseMessage + "\".");
+                System.out.println("Received message \"" + responseMessage.trim() + "\".");
             } catch (IOException e) {
                 System.err.println("Failed to receive/send packet.");
                 e.printStackTrace();

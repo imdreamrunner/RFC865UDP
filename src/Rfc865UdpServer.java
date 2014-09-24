@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.SocketException;
+import java.util.Arrays;
 
 public class Rfc865UdpServer {
 
@@ -43,7 +44,8 @@ public class Rfc865UdpServer {
                 socket.receive(request);
                 requestMessage = new String(readBuffer, 0, READ_BUFFER_SIZE);
                 readBuffer = new byte[READ_BUFFER_SIZE];  // clear buffer
-                System.out.println("Received message \"" + requestMessage + "\".");
+                Arrays.fill(readBuffer, (byte)0);
+                System.out.println("Received message \"" + requestMessage.trim() + "\".");
                 response = new DatagramPacket(sendBuffer, sendBuffer.length, request.getAddress(), request.getPort());
                 socket.send(response);
             } catch (IOException e) {
